@@ -1,0 +1,45 @@
+import math
+import random
+def zad1a(x):
+    licznik=0
+    for i in range(x):
+        if(i%2==0):
+            licznik +=1
+    return licznik
+def zad1b(x):
+    licznik=0
+    for i in range(x):
+        if(i%3==0 and i%5!=0):
+            licznik+=1
+    return licznik
+def zad1c(x):
+    licznik=0
+    for i in range(x):
+        if(x%4==0):
+            licznik+=1
+
+def zad1d(x):
+    list=[]
+    for i in range(x):
+        list.append(random.randint(2,20))
+    print(list)
+    licznik=0
+    for i in range(x-2):
+        if(list[x]<((list[x-1]+list[x+1])/2)):
+            licznik+=1
+def zad1e(x):
+    def silnia(k):
+        if k > 1:
+            return k * silnia(k - 1)
+        else:
+            return 1
+    print(k, '! =', silnia(k))
+    list1ze = []
+    for i in range(x):
+        list.append(random.randint(2, 20))
+    print(list1ze)
+    licznik = 0
+    for i in range(x - 2):
+        if ():
+            licznik += 1
+
