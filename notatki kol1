@@ -31,3 +31,45 @@ def najczesciej_wystepujaca_liczba(nazwa_pliku):
 # Przykładowe użycie funkcji
 nazwa_pliku = "liczby.txt"
 najczesciej_wystepujaca_liczba(nazwa_pliku)
+
+
+
+def suma_kolumn(nazwa_pliku):
+    suma_kolumn = []
+    try:
+        with open(nazwa_pliku, 'r') as file:
+            lines = file.readlines()
+            # Sprawdzenie czy plik nie jest pusty
+            if len(lines) == 0:
+                print("Plik jest pusty.")
+                return None
+            
+            # Liczba kolumn - długość pierwszego wiersza
+            num_columns = len(lines[0].strip().split())
+            # Inicjalizacja listy sum kolumn
+            suma_kolumn = [0] * num_columns
+            
+            for line in lines:
+                # Podziel wiersz na liczby
+                liczby = line.strip().split()
+                if not liczby:
+                    continue
+                
+                # Dodaj wartości do odpowiednich kolumn
+                for i, liczba in enumerate(liczby):
+                    suma_kolumn[i] += int(liczba)
+        
+        return suma_kolumn
+    
+    except FileNotFoundError:
+        print(f"Plik o nazwie {nazwa_pliku} nie został znaleziony.")
+        return None
+    except Exception as e:
+        print("Wystąpił błąd:", e)
+        return None
+
+# Przykładowe użycie funkcji
+nazwa_pliku = "liczby.txt"
+wynik = suma_kolumn(nazwa_pliku)
+if wynik is not None:
+    print("Suma kolumn:", wynik)
