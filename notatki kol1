@@ -1,3 +1,48 @@
+
+
+import random
+
+def generuj_i_odwroc(min_val, max_val, ile):
+    if min_val >= max_val:
+        print("Błąd: min musi być mniejsze od max.")
+        return None
+    
+    try:
+        lista = [random.randint(min_val, max_val) for _ in range(ile)]
+        print("Wygenerowana lista:", lista)
+        
+        lista_odwrocona = [-x for x in lista]
+        return lista_odwrocona
+    
+    except Exception as e:
+        print("Wystąpił błąd:", e)
+        return None
+
+# Przykładowe użycie funkcji
+min_val = 1
+max_val = 100
+ile = 5
+
+wynik = generuj_i_odwroc(min_val, max_val, ile)
+if wynik is not None:
+    print("Zmodyfikowana lista:", wynik)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def najczesciej_wystepujaca_liczba(nazwa_pliku):
     try:
         with open(nazwa_pliku, 'r') as file:
