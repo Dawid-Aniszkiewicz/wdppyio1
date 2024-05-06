@@ -1,0 +1,33 @@
+def najczesciej_wystepujaca_liczba(nazwa_pliku):
+    try:
+        with open(nazwa_pliku, 'r') as file:
+            for line in file:
+                # Podziel wiersz na liczby
+                liczby = line.strip().split()
+                if not liczby:
+                    continue
+
+                # Utwórz słownik do zliczania wystąpień liczb
+                licznik = {}
+                for liczba in liczby:
+                    licznik[liczba] = licznik.get(liczba, 0) + 1
+
+                # Znajdź najczęściej występującą liczbę
+                najczestsza_liczba = max(licznik, key=licznik.get)
+                najczestosc = licznik[najczestsza_liczba]
+
+                # Jeżeli istnieje więcej niż jedna najczęstsza liczba, wybierz losową
+                najczestsze_liczby = [liczba for liczba in licznik if licznik[liczba] == najczestosc]
+                wybrana_liczba = random.choice(najczestsze_liczby)
+
+                print(f"Najczęściej występująca liczba w wierszu: {wybrana_liczba}")
+
+    except FileNotFoundError:
+        print(f"Plik o nazwie {nazwa_pliku} nie został znaleziony.")
+    except Exception as e:
+        print("Wystąpił błąd:", e)
+
+
+# Przykładowe użycie funkcji
+nazwa_pliku = "liczby.txt"
+najczesciej_wystepujaca_liczba(nazwa_pliku)
